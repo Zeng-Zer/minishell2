@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Mon Mar 28 19:57:50 2016 David Zeng
+## Last update Mon Mar 28 21:53:59 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -15,6 +15,8 @@ SRC	= main.c \
 	  src/my_str_to_tab.c \
 	  src/my_builtins.c \
 	  src/my_setenv.c \
+	  src/my_get_env.c \
+	  src/my_cd.c \
 
 NAME	= mysh
 

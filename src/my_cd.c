@@ -5,42 +5,19 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Jan  7 01:09:05 2016 David Zeng
-** Last update Fri Jan 22 02:40:03 2016 David Zeng
+** Last update Mon Mar 28 21:59:11 2016 David Zeng
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include "my.h"
-#include "my_list.h"
 #include "my_fonction.h"
 
-char		*my_get_lenv(t_list *env, char *elem)
-{
-  t_node	*tmp;
-  char		*str;
-
-  tmp = env->debut;
-  while (tmp != NULL)
-    {
-      str = tmp->data;
-      if (my_strncmp(str, elem, my_strlen(elem) - 1) == 0 &&
-	  str[my_strlen(elem)] == '=')
-	return (&str[my_strlen(elem) + 1]);
-      tmp = tmp->next;
-    }
-  return (NULL);
-}
-
-void		my_chdir_chwd(char *path, t_list *env)
+static void	my_chdir_chwd(char *path, char ***env)
 {
   char		**tab;
 
   if ((tab = malloc(sizeof(char *) * 4)) == NULL ||
       (tab[0] = my_strdup("setenv")) == NULL ||
       (tab[1] = my_strdup("OLDPWD")) == NULL)
-    return ;
+    return;
   tab[2] = getcwd(NULL, 0);
   chdir(path);
   tab[3] = NULL;
@@ -56,7 +33,7 @@ void		my_chdir_chwd(char *path, t_list *env)
   my_free_tab(tab);
 }
 
-int		my_go_to_dir(char *path, t_list *env)
+static int	my_go_to_dir(char *path, char ***env)
 {
   struct stat	buf;
 
@@ -84,7 +61,7 @@ int		my_go_to_dir(char *path, t_list *env)
   return (0);
 }
 
-int		my_check_cd_minus(char *path, t_list *env)
+static int	my_check_cd_minus(char *path, char ***env)
 {
   char		*oldpwd;
 
@@ -92,17 +69,15 @@ int		my_check_cd_minus(char *path, t_list *env)
     my_go_to_dir(path, env);
   else
     {
-      if ((oldpwd = my_get_lenv(env, "OLDPWD")) != NULL)
-	{
-	  my_go_to_dir(oldpwd, env);
-	}
+      if ((oldpwd = my_get_env(*env, "OLDPWD=")) != NULL)
+	my_go_to_dir(oldpwd, env);
       else
 	my_go_to_dir("", env);
     }
   return (0);
 }
 
-int		my_cd(char **tab, t_list *env)
+int		my_cd(char **tab, char ***env)
 {
   if (my_strcmp(tab[0], "cd") != 0)
     return (0);
@@ -112,12 +87,8 @@ int		my_cd(char **tab, t_list *env)
       return (1);
     }
   else if (my_tablen(tab) == 1)
-    {
-      my_chdir_chwd(my_get_lenv(env, "HOME"), env);
-    }
+    my_chdir_chwd(my_get_env(*env, "HOME="), env);
   else
-    {
-      my_check_cd_minus(tab[1], env);
-    }
+    my_check_cd_minus(tab[1], env);
   return (1);
 }
