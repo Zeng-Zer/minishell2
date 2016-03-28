@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Sun Oct 11 14:33:50 2015 David Zeng
-## Last update Mon Mar 28 16:10:00 2016 David Zeng
+## Last update Mon Mar 28 19:48:08 2016 David Zeng
 ##
 
 SRC=	  my_getnbr.c \
@@ -32,6 +32,7 @@ SRC=	  my_getnbr.c \
 	  my_memset.c \
 	  my_memcpy.c \
 	  my_testnbr.c \
+	  my_realloc.c \
 	  printf/my_printf.c \
 	  printf/disp_stdarg.c \
 	  printf/my_print.c \

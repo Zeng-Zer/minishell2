@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Oct  8 14:34:15 2015 David Zeng
-** Last update Mon Mar 28 16:18:32 2016 David Zeng
+** Last update Mon Mar 28 19:48:52 2016 David Zeng
 */
 
 #include <stdarg.h>
@@ -42,7 +42,7 @@ void	my_put_err(char *str);
 char	*my_strndup(char *str, int nb);
 int	my_tablen(char **tab);
 char	*get_next_line(const int fd);
-char	*my_realloc(char *pointer, unsigned int size);
+void	*my_realloc(void *dest, size_t old_size, size_t new_size);
 unsigned int	my_getnbr_base(char *str, char *base);
 void	*my_memset(void *dest, int c, size_t len);
 void	*my_memcpy(void *dest, const void *src, size_t len);

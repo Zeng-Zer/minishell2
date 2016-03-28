@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Jan  6 22:30:09 2016 David Zeng
-** Last update Mon Mar 28 16:37:23 2016 David Zeng
+** Last update Mon Mar 28 19:52:06 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -49,10 +49,10 @@ int		my_builtins(char **tab, char **env)
   i = 0;
   builtins[0] = &my_exit;
   builtins[1] = &my_env;
-  builtins[2] = NULL;
+  builtins[2] = &my_setenv;
   builtins[3] = NULL;
   builtins[4] = NULL;
-  while (i < 2)
+  while (i < 3)
     {
       if (builtins[i](tab, env) == 1)
 	return (1);

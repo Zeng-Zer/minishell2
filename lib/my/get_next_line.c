@@ -5,14 +5,14 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Dec  4 13:06:27 2015 David Zeng
-** Last update Fri Mar 18 21:10:38 2016 David Zeng
+** Last update Mon Mar 28 19:47:52 2016 David Zeng
 */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "my.h"
 
-char		*my_realloc(char *pointer, unsigned int size)
+char		*my_reaalloc(char *pointer, unsigned int size)
 {
   char		*str;
 
@@ -67,7 +67,7 @@ char		*get_next_line(const int fd)
 	}
       debut = ind--;
       while (buffer[++ind] != '\n' && buffer[ind] != 0);
-      if ((str = my_realloc(str, sizeof(char) * (ind - debut + 1))) == NULL)
+      if ((str = my_reaalloc(str, sizeof(char) * (ind - debut + 1))) == NULL)
 	return (NULL);
       my_strncpy(&str[my_strlen(str)], &buffer[debut], ind - debut);
       my_replace_flag(&flag, &ind, buffer);
