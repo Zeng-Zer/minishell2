@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Mon Mar 28 21:47:20 2016 David Zeng
+** Last update Mon Mar 28 22:10:16 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -31,5 +31,7 @@ int		get_ref_env(char **env, char *name);
 int		my_setenv(char **tab, char ***env);
 int		env_cmp(char **tab, char *env);
 int		my_cd(char **tab, char ***env);
+int		my_check_exec(char *path);
+int		my_get_exec(char **env, char **tab);
 
 #endif /* !MY_FONCTION_H_ */

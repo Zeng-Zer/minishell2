@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 15:11:10 2016 David Zeng
-** Last update Mon Mar 28 21:19:44 2016 David Zeng
+** Last update Mon Mar 28 22:11:00 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -40,7 +40,7 @@ int		init_minishell2(char **env)
       if ((tab = my_parsing(str)) != NULL)
 	{
 	  if (my_builtins(tab, &env) != 1)
-	    my_putchar('a');
+	    my_get_exec(env, tab);
 	  my_free_tab(tab);
 	}
     }
