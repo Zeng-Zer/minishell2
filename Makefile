@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Mon Mar 28 22:10:38 2016 David Zeng
+## Last update Wed Mar 30 21:50:22 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -22,15 +22,18 @@ SRC	= main.c \
 
 NAME	= mysh
 
-LIB	= libmy.a
+LIB	= ./lib/libmy.a
 
-LIST	= libmlist.a
+LIST	= ./lib/libmlist.a
 
 CC	= gcc
 
 OBJ	= $(SRC:.c=.o)
 
-CFLAGS	= -g -W -Werror -Wall -Wno-unused-variable -Wno-unused-parameter
+CFLAGS	= -g -W -Werror -Wall \
+	  -Wno-unused-variable \
+	  -Wno-unused-parameter \
+	  -fms-extensions
 
 INC	= -L./lib -lmlist -lmy -I./include/
 
@@ -38,28 +41,45 @@ PATH1	= ./lib/my/
 
 PATH2	= ./lib/mlist/
 
-all: 	  ./lib/$(LIB) ./lib/$(LIST) $(NAME)
+all: 	  $(LIB) $(LIST) $(NAME)
 
 $(NAME):  $(OBJ)
-	  @$(CC) -o $(NAME) $(OBJ) $(INC) $(CFLAGS)
+	  @$(CC) -o $(NAME) $(OBJ) $(INC) $(CFLAGS) && $(ECHONAME)
 
-./lib/$(LIB):
+$(LIB):
 	  @$(MAKE) -C $(PATH1) yo
 
-./lib/$(LIST):
+$(LIST):
 	  @$(MAKE) -C $(PATH2) yo
 
 clean:
-	  @rm -f $(OBJ)
+	  @rm -f $(OBJ) && $(ECHOCLEAN)
 
 fclean:	  clean
-	  @rm -f $(NAME)
+	  @rm -f $(NAME) && $(ECHOFCLEAN)
 
 re:	  fclean all
 
 .PHONY:	  all clean fclean re
 
-yo:	  all clean
+yo:	  all
+	  @rm -f $(OBJ)
 
 .c.o:
-	  @$(CC) -c $< -o $@ $(INC) $(CFLAGS)
+	  @$(CC) -c $< -o $@ $(INC) $(CFLAGS) && $(ECHOOBJ)
+
+## HIDDEN
+DEFAULT	  = "\033[00m"
+GREEN	  = "\033[0;32m"
+TEAL	  = "\033[1;36m"
+RED	  = "\033[0;31m"
+
+ECHONAME  = echo -e $(GREEN)"[BIN]" $(TEAL) $(NAME) $(DEFAULT) || \
+	    echo -e $(RED)"[XX]" $(TEAL) $(NAME) $(DEFAULT)
+
+ECHOOBJ	  = echo -e $(GREEN)"[OK] " $(TEAL) $< $(DEFAULT) || \
+	    echo -e $(RED)"[XX]" $(TEAL) $< $(DEFAULT)
+
+ECHOCLEAN = echo -e $(RED)"[DELETED]" $(TEAL)$(OBJ) $(DEFAULT)
+
+ECHOFCLEAN= echo -e $(RED)"[DELETED]" $(TEAL)$(NAME) $(DEFAULT)
