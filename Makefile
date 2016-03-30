@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Wed Mar 30 21:50:22 2016 David Zeng
+## Last update Wed Mar 30 22:26:17 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -13,6 +13,7 @@ SRC	= main.c \
 	  src/convert_env.c \
 	  src/my_parsing.c \
 	  src/my_str_to_tab.c \
+	  src/my_str_to_list.c \
 	  src/my_builtins.c \
 	  src/my_setenv.c \
 	  src/my_get_env.c \
