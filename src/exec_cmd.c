@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 21:55:42 2016 David Zeng
-** Last update Wed Mar 30 22:45:44 2016 David Zeng
+** Last update Thu Mar 31 00:50:05 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -76,14 +76,10 @@ static int	my_local_exec(char **tab, char **env)
 
 int		my_get_exec(char **env, char **tab)
 {
-  int		i;
-  int		debut;
   char		*path;
   t_list	*list;
   t_node	*node;
 
-  //i = -1;
-  //debut = 0;
   if ((path = my_get_env(env, "PATH=")) != NULL && tab[0][0] != '.')
     {
       list = my_str_to_list(path, ':');
@@ -98,17 +94,6 @@ int		my_get_exec(char **env, char **tab)
 	  node = node->next;
 	}
       my_free_all(&list, &free);
-      //      while (path[++i] != 0)
-      //	{
-      //	  if (path[i] == ':')
-      //	    {
-      //	      if (my_exec(my_strndup(&path[debut], i - debut), tab, env) == 1)
-      //		return (1);
-      //	      debut = i + 1;
-      //	    }
-      //	}
-      //      if (my_exec(my_strndup(&path[debut], i - debut), tab, env) == 1)
-      //	return (1);
     }
   if (my_local_exec(tab, env) == 1)
     return (1);

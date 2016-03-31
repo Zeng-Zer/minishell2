@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 18:00:42 2016 David Zeng
-** Last update Mon Mar 28 21:28:08 2016 David Zeng
+** Last update Thu Mar 31 03:42:17 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -85,9 +85,7 @@ int		my_setenv(char **tab, char ***env)
 {
   int		tmp;
 
-  if (my_strcmp(tab[0], "setenv") != 0)
-    return (0);
-  else if ((tmp = my_tablen(tab)) > 3)
+  if ((tmp = my_tablen(tab)) > 3)
     {
       my_put_err("setenv: Too many arguments.\n");
       return (1);

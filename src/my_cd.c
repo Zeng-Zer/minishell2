@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Jan  7 01:09:05 2016 David Zeng
-** Last update Mon Mar 28 21:59:11 2016 David Zeng
+** Last update Thu Mar 31 03:42:04 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -79,8 +79,6 @@ static int	my_check_cd_minus(char *path, char ***env)
 
 int		my_cd(char **tab, char ***env)
 {
-  if (my_strcmp(tab[0], "cd") != 0)
-    return (0);
   if (my_tablen(tab) > 2)
     {
       my_put_err("USAGE: cd [PATH]\n");
