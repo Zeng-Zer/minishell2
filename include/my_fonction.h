@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Fri Apr  1 14:09:52 2016 David Zeng
+** Last update Fri Apr  1 16:30:24 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -38,5 +38,6 @@ int		my_check_exec(char *path);
 int		my_get_exec(char **env, char **tab);
 t_list		*my_str_to_list(char *str, int c);
 void		my_get_builtins_reference(int (*builtins[])(char **, char ***));
+t_list		*lexer(char *str);
 
 #endif /* !MY_FONCTION_H_ */

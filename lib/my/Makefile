@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Sun Oct 11 14:33:50 2015 David Zeng
-## Last update Mon Mar 28 19:48:08 2016 David Zeng
+## Last update Fri Apr  1 15:20:26 2016 David Zeng
 ##
 
 SRC=	  my_getnbr.c \
@@ -31,8 +31,9 @@ SRC=	  my_getnbr.c \
 	  my_getnbr_base.c \
 	  my_memset.c \
 	  my_memcpy.c \
-	  my_testnbr.c \
+	  malloc_err.c \
 	  my_realloc.c \
+	  my_testnbr.c \
 	  printf/my_printf.c \
 	  printf/disp_stdarg.c \
 	  printf/my_print.c \
@@ -50,32 +51,53 @@ SRC=	  my_getnbr.c \
 	  sprintf/my_sprint3.c \
 	  sprintf/my_sprintS.c \
 
-OBJ=	  $(SRC:.c=.o)
-
 NAME=	  libmy.a
 
-CFLAGS=	  -W -Werror -Wall -I../../include/ -I./
+LIB=	  ../$(NAME)
 
-AR=	  @ar rc
+OBJ=	  $(SRC:.c=.o)
 
-RAN=	  @ranlib
+INC=	  -I../../include/ -I./
 
-all:	  ../$(NAME)
+CFLAGS=	  -W -Werror -Wall
 
-../$(NAME):	$(OBJ)
-	  $(AR) $(NAME) $(OBJ)
-	  $(RAN) $(NAME)
+AR=	  ar rc
+
+RAN=	  ranlib
+
+all:	  $(LIB)
+
+$(LIB):	  $(OBJ)
+	  @$(AR) $(NAME) $(OBJ)
+	  @$(RAN) $(NAME) && $(ECHONAME)
 	  @mv $(NAME) ../
 
 clean:
+	  @rm -f $(OBJ) && $(ECHOCLEAN)
+
+fclean:	  clean
+	  @rm -f $(LIB) && $(ECHOFCLEAN)
+
+re:	  fclean all
+
+yo:	  all
 	  @rm -f $(OBJ)
 
-fclean:		clean
-	  @rm -f ../$(NAME)
-
-re:	fclean all
-
-yo:	all clean
-
 .c.o:
-	  @gcc -c $< -o $@ $(CFLAGS)
+	  @gcc -c $< -o $@ $(INC) $(CFLAGS) && $(ECHOOBJ)
+
+## HIDDEN
+DEFAULT	  = "\033[00m"
+GREEN	  = "\033[0;32m"
+TEAL	  = "\033[1;36m"
+RED	  = "\033[0;31m"
+
+ECHONAME  = echo -e $(GREEN)"[BIN]" $(TEAL) $(NAME) $(DEFAULT) || \
+	    echo -e $(RED)"[XX]" $(TEAL) $(NAME) $(DEFAULT)
+
+ECHOOBJ	  = echo -e $(GREEN)"[OK] " $(TEAL) $< $(DEFAULT) || \
+	    echo -e $(RED)"[XX]" $(TEAL) $< $(DEFAULT)
+
+ECHOCLEAN = echo -e $(RED)"[DELETED]" $(TEAL) "*.o" $(DEFAULT)
+
+ECHOFCLEAN= echo -e $(RED)"[DELETED]" $(TEAL) $(NAME) $(DEFAULT)
