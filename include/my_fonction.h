@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Thu Mar 31 03:23:00 2016 David Zeng
+** Last update Fri Apr  1 14:09:52 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include "my.h"
 # include "my_list.h"
+
+# define true 1
+# define false 0
 
 int		init_minishell2(char **env);
 char		**convert_env(char **env);
