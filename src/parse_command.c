@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 19:41:31 2016 David Zeng
-** Last update Sun Apr  3 23:06:00 2016 David Zeng
+** Last update Mon Apr  4 01:04:53 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -60,7 +60,7 @@ static int		add_cmd_list(t_list *list, char **tab, int max, int i)
 	}
       else if (parser_cond_redir(tab, i, -1))
 	{
-	  if (add_redir(act, tab, i, max) == -1)
+	  if (add_redir(act, tab, &i, max) == -1)
 	    return (free_process(proc));
 	}
       else

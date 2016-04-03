@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 15:11:10 2016 David Zeng
-** Last update Sun Apr  3 22:38:01 2016 David Zeng
+** Last update Mon Apr  4 01:12:44 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -27,6 +27,35 @@ void		exit_clean_env(char **env, int value, char **tab)
   exit(value);
 }
 
+void		show_pipe(t_proc *proc)//DEBUG==========================
+{
+  t_proc	*tmp;
+
+  tmp = proc;
+  while (tmp != NULL)
+    {
+      my_printf("1) argv:\n%t\n", tmp->argv);
+      my_printf("2) redirect:\n%s\n", tmp->redir);
+      my_printf("3) name:\n%s\n", tmp->name);
+      tmp = tmp->next;
+    }
+}
+
+void		show_process(t_list *list)//DEBUG=======================
+{
+  t_node	*node;
+  t_proc	*proc;
+
+  node = list->debut;
+  while (node != NULL)
+    {
+      proc = node->data;
+      my_printf("\n======PROC======\n");
+      show_pipe(proc);
+      node = node->next;
+    }
+}
+
 int		init_minishell2(char **env)
 {
   char		*str;
@@ -46,7 +75,10 @@ int		init_minishell2(char **env)
       /* 	} */
       tab = lexer(str);
       if ((list = parse_command(tab)) != NULL)
-	my_free_all(&list, &free_proc);
+	{
+	  show_process(list);
+	  my_free_all(&list, &free_proc);
+	}
     }
   return (0);
 }

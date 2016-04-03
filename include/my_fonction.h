@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Sun Apr  3 22:59:30 2016 David Zeng
+** Last update Mon Apr  4 01:04:43 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -52,7 +52,7 @@ t_list		*parse_command(char **tab);
 int		free_process(t_proc *proc);
 void		free_proc(t_proc *proc);
 int		parser_cond_redir(char **tab, int i, int max);
-int		add_redir(t_proc *act, char **tab, int i, int max);
+int		add_redir(t_proc *act, char **tab, int *i, int max);
 int		add_cmd(t_proc *act, char **tab, int i, int max);
 void		lexer_token(t_list *list, char *str, int i);
 

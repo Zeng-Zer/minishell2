@@ -5,25 +5,26 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Sun Apr  3 22:14:53 2016 David Zeng
-** Last update Sun Apr  3 22:35:11 2016 David Zeng
+** Last update Mon Apr  4 01:04:33 2016 David Zeng
 */
 
 #include "my_fonction.h"
 
-int		add_redir(t_proc *act, char **tab, int i, int max)
+int		add_redir(t_proc *act, char **tab, int *i, int max)
 {
-  if (parser_cond_redir(tab, i + 1, max) == 0)
+  if (parser_cond_redir(tab, *i + 1, max) == 0)
     {
       my_put_err("Missing name for redirect.\n");
       return (-1);
     }
-  if (act->argv == NULL && parser_cond_redir(tab, i + 2, max) == 0)
+  if (act->argv == NULL && parser_cond_redir(tab, *i + 2, max) == 0)
     {
       my_put_err("Invalid null command.\n");
       return (-1);
     }
-  my_strcpy(act->redir, tab[i]);
-  my_strcpy(act->name, tab[i + 1]);
+  my_strcpy(act->redir, tab[*i]);
+  my_strcpy(act->name, tab[*i + 1]);
+  *i = *i + 1;
   return (0);
 }
 
