@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 14:33:33 2016 David Zeng
-** Last update Fri Apr  1 16:35:00 2016 David Zeng
+** Last update Sun Apr  3 22:59:01 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -51,18 +51,7 @@ static int	fill_lexer_list(t_list *list, char *str, int i)
       while (str[i] != 0 && (str[i] == ' ' || str[i] == '\t' || str[i] == ';' ||
 			     str[i] == '|' || str[i] == '>' || str[i] == '<'))
 	{
-	  if (str[i] == '|')
-	    my_add_list(list, my_strdup("|"));
-	  else if (str[i] == ';')
-	    my_add_list(list, my_strdup(";"));
-	  else if (str[i] == '>' && str[i + 1] == '>')
-	    my_add_list(list, my_strdup(">>"));
-	  else if (str[i] == '>' && !(i != 0 && str[i - 1] == '>'))
-	    my_add_list(list, my_strdup(">"));
-	  else if (str[i] == '<' && str[i + 1] == '<')
-	    my_add_list(list, my_strdup("<<"));
-	  else if (str[i] == '<' && !(i != 0 && str[i - 1] == '<'))
-	    my_add_list(list, my_strdup("<"));
+	  lexer_token(list, str, i);
 	  i = i + 1;
 	}
       if (str[i] != 0)
@@ -72,16 +61,41 @@ static int	fill_lexer_list(t_list *list, char *str, int i)
   return (0);
 }
 
-t_list		*lexer(char *str)
+static char	**put_list_in_tab(t_list *list)
+{
+  char		**tab;
+  int		i;
+  t_node	*tmp;
+
+  tab = MALLOC(sizeof(char *) * (list->length + 1));
+  tmp = list->debut;
+  i = 0;
+  while (tmp != NULL)
+    {
+      tab[i] = tmp->data;
+      tmp = tmp->next;
+      i = i + 1;
+    }
+  tab[i] = NULL;
+  return (tab);
+}
+
+char		**lexer(char *str)
 {
   t_list	*list;
+  char		**tab;
 
   if ((list = my_declare_list()) == NULL)
     exit(1);
   if (fill_lexer_list(list, str, 0) == -1)
     {
       my_free_all(&list, &free);
+      free(str);
       return (NULL);
     }
-  return (list);
+  tab = put_list_in_tab(list);
+  my_free_list(&list);
+  my_show_tab(tab);
+  free(str);
+  return (tab);
 }

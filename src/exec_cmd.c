@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 21:55:42 2016 David Zeng
-** Last update Fri Apr  1 14:03:50 2016 David Zeng
+** Last update Fri Apr  1 23:06:35 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -27,11 +27,11 @@ static int	my_fork_exec(char *path, char **env, char **tab)
       if (WIFSIGNALED(status))
 	{
 	  if (WTERMSIG(status) == SIGSEGV)
-	    my_printf("Segmentation fault\n");
+	    my_put_err("Segmentation fault\n");
 	  else if (WTERMSIG(status) == SIGFPE)
-	    my_printf("Floating point exception\n");
+	    my_put_err("Floating point exception\n");
 	  else if (WTERMSIG(status) == SIGABRT)
-	    my_printf("Aborted\n");
+	    my_put_err("Aborted\n");
 	}
     }
   else
