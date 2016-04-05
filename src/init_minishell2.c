@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 15:11:10 2016 David Zeng
-** Last update Tue Apr  5 23:19:55 2016 David Zeng
+** Last update Wed Apr  6 01:24:20 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -35,8 +35,10 @@ void		show_pipe(t_proc *proc)//DEBUG==========================
   while (tmp != NULL)
     {
       my_printf("1) argv:\n%t", tmp->argv);
-      my_printf("2) redirect:\n%s\n", tmp->redir);
-      my_printf("3) name:\n%s\n\n", tmp->name);
+      my_printf("2) in:\n%s\n", tmp->in);
+      my_printf("3) name_in:\n%s\n\n", tmp->name_in);
+      my_printf("4) out:\n%s\n", tmp->out);
+      my_printf("5) name_out:\n%s\n\n", tmp->name_out);
       tmp = tmp->next;
     }
 }

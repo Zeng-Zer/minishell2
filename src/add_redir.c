@@ -5,10 +5,35 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Sun Apr  3 22:14:53 2016 David Zeng
-** Last update Mon Apr  4 01:04:33 2016 David Zeng
+** Last update Wed Apr  6 01:32:31 2016 David Zeng
 */
 
 #include "my_fonction.h"
+
+int		check_redir(t_proc *act, char **tab, int *i)
+{
+  if (my_strcmp(tab[*i], ">>") == 0 || my_strcmp(tab[*i], ">") == 0)
+    {
+      if (act->out[0] != 0)
+	{
+	  my_put_err("Ambiguous output redirect.\n");
+	  return (-1);
+	}
+      my_strcpy(act->out, tab[*i]);
+      my_strcpy(act->name_out, tab[*i + 1]);
+    }
+  else if (my_strcmp(tab[*i], "<<") == 0 || my_strcmp(tab[*i], "<") == 0)
+    {
+      if (act->in[0] != 0)
+	{
+	  my_put_err("Ambiguous input redirect.\n");
+	  return (-1);
+	}
+      my_strcpy(act->in, tab[*i]);
+      my_strcpy(act->name_in, tab[*i + 1]);
+    }
+  return (0);
+}
 
 int		add_redir(t_proc *act, char **tab, int *i, int max)
 {
@@ -22,8 +47,8 @@ int		add_redir(t_proc *act, char **tab, int *i, int max)
       my_put_err("Invalid null command.\n");
       return (-1);
     }
-  my_strcpy(act->redir, tab[*i]);
-  my_strcpy(act->name, tab[*i + 1]);
+  if (check_redir(act, tab, i) == -1)
+    return (-1);
   *i = *i + 1;
   return (0);
 }

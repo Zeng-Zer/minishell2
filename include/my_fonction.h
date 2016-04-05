@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Tue Apr  5 21:54:24 2016 David Zeng
+** Last update Wed Apr  6 01:02:36 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -28,8 +28,10 @@ typedef struct	s_proc
 {
   struct s_proc	*next;
   char		**argv;
-  char		redir[3];
-  char		name[512];
+  char		in[3];
+  char		out[3];
+  char		name_in[512];
+  char		name_out[512];
 }		t_proc;
 
 int		init_minishell2(char **env);

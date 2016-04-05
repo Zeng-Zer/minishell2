@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 19:41:31 2016 David Zeng
-** Last update Mon Apr  4 01:04:53 2016 David Zeng
+** Last update Wed Apr  6 01:36:37 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -17,8 +17,10 @@ static t_proc		*new_proc(void)
   new = MALLOC(sizeof(t_proc));
   new->next = NULL;
   new->argv = NULL;
-  new->redir[0] = 0;
-  new->name[0] = 0;
+  new->in[0] = 0;
+  new->out[0] = 0;
+  new->name_in[0] = 0;
+  new->name_out[0] = 0;
   return (new);
 }
 
