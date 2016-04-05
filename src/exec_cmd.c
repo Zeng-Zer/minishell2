@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 21:55:42 2016 David Zeng
-** Last update Fri Apr  1 23:06:35 2016 David Zeng
+** Last update Tue Apr  5 23:17:51 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -98,6 +98,6 @@ int		my_get_exec(char **env, char **tab)
   if (my_local_exec(tab, env) == 1)
     return (1);
   my_put_err(tab[0]);
-  my_put_err(": command not found\n");
+  my_put_err(": Command not found.\n");
   return (0);
 }
