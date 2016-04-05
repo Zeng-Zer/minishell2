@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Sun Apr  3 22:59:41 2016 David Zeng
+## Last update Tue Apr  5 21:54:35 2016 David Zeng
 ##
 
 SRC	= main.c \
@@ -25,6 +25,7 @@ SRC	= main.c \
 	  src/parse_command.c \
 	  src/add_redir.c \
 	  src/free_process.c \
+	  src/exec_process.c \
 	  src/lexer_token.c \
 
 NAME	= mysh

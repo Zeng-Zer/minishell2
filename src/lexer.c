@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 14:33:33 2016 David Zeng
-** Last update Sun Apr  3 22:59:01 2016 David Zeng
+** Last update Mon Apr  4 23:11:03 2016 
 */
 
 #include "my_fonction.h"
@@ -95,7 +95,7 @@ char		**lexer(char *str)
     }
   tab = put_list_in_tab(list);
   my_free_list(&list);
-  my_show_tab(tab);
+  my_show_tab(tab);//DEBUG============================================
   free(str);
   return (tab);
 }

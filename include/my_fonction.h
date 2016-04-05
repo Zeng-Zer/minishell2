@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Mon Apr  4 01:04:43 2016 David Zeng
+** Last update Tue Apr  5 21:54:24 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -37,7 +37,7 @@ char		**convert_env(char **env);
 void		exit_clean_env(char **env, int value, char **tab);
 char		**my_str_to_tab(char *str);
 char		**my_parsing(char *str);
-int		my_builtins(char **tab, char ***env);
+int		my_builtins(char **tab, char ***env, int opt);
 char		*my_get_env(char **env, char *name);
 int		get_ref_env(char **env, char *name);
 int		my_setenv(char **tab, char ***env);
@@ -55,5 +55,6 @@ int		parser_cond_redir(char **tab, int i, int max);
 int		add_redir(t_proc *act, char **tab, int *i, int max);
 int		add_cmd(t_proc *act, char **tab, int i, int max);
 void		lexer_token(t_list *list, char *str, int i);
+void		exec_process(t_list *list, char ***env);
 
 #endif /* !MY_FONCTION_H_ */
