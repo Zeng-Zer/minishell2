@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Apr  6 01:02:36 2016 David Zeng
+** Last update Wed Apr  6 01:39:24 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -58,5 +58,6 @@ int		add_redir(t_proc *act, char **tab, int *i, int max);
 int		add_cmd(t_proc *act, char **tab, int i, int max);
 void		lexer_token(t_list *list, char *str, int i);
 void		exec_process(t_list *list, char ***env);
+int		parse_redirection(t_list *list);
 
 #endif /* !MY_FONCTION_H_ */
