@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 15:11:10 2016 David Zeng
-** Last update Tue Apr  5 23:12:47 2016 David Zeng
+** Last update Tue Apr  5 23:19:55 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -70,7 +70,7 @@ int		init_minishell2(char **env)
       tab = lexer(str);
       if ((list = parse_command(tab)) != NULL)
 	{
-	  show_process(list);
+	  //show_process(list);//DEBUG===================================
 	  exec_process(list, &env);
 	  my_free_all(&list, &free_proc);
 	}

@@ -5,37 +5,14 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 21:55:42 2016 David Zeng
-** Last update Tue Apr  5 23:17:51 2016 David Zeng
+** Last update Tue Apr  5 23:39:45 2016 David Zeng
 */
 
 #include "my_fonction.h"
 
 static int	my_fork_exec(char *path, char **env, char **tab)
 {
-  pid_t		pid;
-  int		status;
-
-  pid = fork();
-  if (pid == 0)
-    {
-      execve(path, tab, env);
-      exit(0);
-    }
-  else if (pid > 0)
-    {
-      wait(&status);
-      if (WIFSIGNALED(status))
-	{
-	  if (WTERMSIG(status) == SIGSEGV)
-	    my_put_err("Segmentation fault\n");
-	  else if (WTERMSIG(status) == SIGFPE)
-	    my_put_err("Floating point exception\n");
-	  else if (WTERMSIG(status) == SIGABRT)
-	    my_put_err("Aborted\n");
-	}
-    }
-  else
-    return (-1);
+  execve(path, tab, env);
   return (0);
 }
 
@@ -63,12 +40,7 @@ static int	my_local_exec(char **tab, char **env)
 {
   if (my_check_exec(tab[0]) == 0 && access(tab[0], X_OK) == 0)
     {
-      if (my_fork_exec(tab[0], env, tab) == -1)
-	{
-	  my_put_err(tab[0]);
-	  my_put_err(" execution failed\n");
-	  return (1);
-	}
+      my_fork_exec(tab[0], env, tab);
       return (1);
     }
   return (0);
