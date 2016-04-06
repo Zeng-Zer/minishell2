@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Apr  6 01:47:34 2016 David Zeng
-** Last update Wed Apr  6 03:44:49 2016 David Zeng
+** Last update Wed Apr  6 03:57:50 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -60,7 +60,20 @@ static int	redir_in(t_proc *proc)
 
 static int	redir_out(t_proc *proc)
 {
-  (void)proc;
+  int		fd;
+
+  if (my_strcmp(proc->out, ">") == 0)
+    {
+      if ((fd = open(proc->name_out, O_CREAT | O_TRUNC | O_RDWR, 0644)) == -1)
+	return (-1);
+      dup2(fd, 1);
+    }
+  else if (my_strcmp(proc->out, ">>") == 0)
+    {
+      if ((fd = open(proc->name_out, O_CREAT | O_APPEND | O_RDWR, 0644)) == -1)
+	return (-1);
+      dup2(fd, 1);
+    }
   return (0);
 }
 
