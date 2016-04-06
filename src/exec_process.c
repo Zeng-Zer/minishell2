@@ -5,67 +5,70 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Apr  5 21:54:14 2016 David Zeng
-** Last update Wed Apr  6 03:26:06 2016 David Zeng
+** Last update Thu Apr  7 00:16:00 2016 
 */
 
 #include "my_fonction.h"
 
-static void	fork_status(void)
+static void	pipe_and_close(int fd[], int max, int opt)
 {
-  int		status;
+  int		i;
 
-  wait(&status);
-  if (WIFSIGNALED(status))
+  i = 0;
+  if (opt == 1)
     {
-      if (WTERMSIG(status) == SIGSEGV)
-	my_put_err("Segmentation fault\n");
-      else if (WTERMSIG(status) == SIGFPE)
-	my_put_err("Floating point exception\n");
-      else if (WTERMSIG(status) == SIGABRT)
-	my_put_err("Aborted\n");
-    }
-}
-
-static void	fork_pipe(t_proc *proc, char ***env, int *fd_in, int *fd)
-{
-  int		pid;
-
-  if ((pid = fork()) == 0)
-    {
-      if (redir_proc(proc, fd_in, fd) != -1)
+      while (i < max)
 	{
-	  if (my_builtins(proc->argv, env, true) != 1)
-	    my_get_exec(*env, proc->argv);
+	  pipe(&fd[i * 2]);
+	  i = i + 1;
 	}
-      exit(1);
-    }
-  else if (pid > 0)
-    {
-      fork_status();
-      close(fd[1]);
-      *fd_in = fd[0];
     }
   else
-    my_put_err("Fork failed.\n");
+    {
+      while (i < max * 2)
+	{
+	  close(fd[i]);
+	  i = i + 1;
+	}
+    }
 }
 
-static void	exec_pipe(t_proc *proc, char ***env)
+static void	exec_pipe_proc(t_proc *proc, char ***env, int *fd, int cmd_atm)
 {
-  t_proc	*tmp;
-  int		fd_in;
-  int		fd[2];
-
-  tmp = proc;
-  fd_in = 0;
-  while (tmp != NULL)
+  if (redir_proc(proc, fd, &cmd_atm) != -1)
     {
-      pipe(fd);
-      if (tmp->next == NULL && my_builtins(tmp->argv, env, false) == 1)
-	my_builtins(tmp->argv, env, true);
-      else
-	fork_pipe(tmp, env, &fd_in, fd);
-      tmp = tmp->next;
+      if (my_builtins(proc->argv, env, true) != 1)
+	my_get_exec(*env, proc->argv);
     }
+  exit(1);
+}
+
+static void	handle_pipe(t_proc *proc, char ***env, int max)
+{
+  int		cmd_atm;
+  int		fd[max * 2];
+  int		pid;
+
+  pipe_and_close(fd, max, 1);
+  cmd_atm = 0;
+  while (proc != NULL &&
+	 !(proc->next == NULL && my_builtins(proc->argv, env, false) == 1))
+    {
+      if ((pid = fork()) == -1)
+	return (my_put_err("Fork failed.\n"));
+      else if (pid == 0)
+	{
+	  dup_and_close_pipe(proc, fd, cmd_atm, max);
+	  exec_pipe_proc(proc, env, fd, cmd_atm);
+	}
+      proc = proc->next;
+      cmd_atm = cmd_atm + 1;
+    }
+  if (proc != NULL &&
+      proc->next == NULL && my_builtins(proc->argv, env, false) == 1)
+    my_builtins(proc->argv, env, true);
+  pipe_and_close(fd, max, 0);
+  wait_child_proc(max);
 }
 
 void		exec_process(t_list *list, char ***env)
@@ -75,7 +78,7 @@ void		exec_process(t_list *list, char ***env)
   tmp = list->debut;
   while (tmp != NULL)
     {
-      exec_pipe(tmp->data, env);
+      handle_pipe(tmp->data, env, pipe_nbr(tmp->data));
       tmp = tmp->next;
     }
 }

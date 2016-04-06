@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Apr  6 03:15:57 2016 David Zeng
+** Last update Thu Apr  7 00:10:03 2016 
 */
 
 #ifndef MY_FONCTION_H_
@@ -61,5 +61,8 @@ void		lexer_token(t_list *list, char *str, int i);
 void		exec_process(t_list *list, char ***env);
 int		parse_redirection(t_list *list);
 int		redir_proc(t_proc *proc, int *fd_in, int *fd);
+int		pipe_nbr(t_proc *proc);
+void		dup_and_close_pipe(t_proc *proc, int fd[], int cmd_atm, int max);
+void		wait_child_proc();
 
 #endif /* !MY_FONCTION_H_ */

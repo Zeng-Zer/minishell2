@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Apr  6 01:47:34 2016 David Zeng
-** Last update Wed Apr  6 03:57:50 2016 David Zeng
+** Last update Wed Apr  6 21:33:17 2016 
 */
 
 #include "my_fonction.h"
@@ -79,19 +79,19 @@ static int	redir_out(t_proc *proc)
 
 int		redir_proc(t_proc *proc, int *fd_in, int *fd)
 {
-  if (proc->in[0] == 0)
-    dup2(*fd_in, 0);
-  else
-    if (redir_in(proc) == -1)
-      return (-1);
-  if (proc->out[0] == 0)
-    {
-      if (proc->next != NULL)
-	dup2(fd[1], 1);
-    }
-  else
-    if (redir_out(proc) == -1)
-      return (-1);
-  close(fd[0]);
+  /* if (proc->in[0] == 0) */
+  /*   dup2(*fd_in, 0); */
+  /* else */
+  if (proc->in[0] != 0 && redir_in(proc) == -1)
+    return (-1);
+  /* if (proc->out[0] == 0) */
+  /*   { */
+  /*     if (proc->next != NULL) */
+  /* 	dup2(fd[1], 1); */
+  /*   } */
+  /* else */
+  if (proc->out[0] != 0 && redir_out(proc) == -1)
+    return (-1);
+  /* close(fd[0]); */
   return (0);
 }
