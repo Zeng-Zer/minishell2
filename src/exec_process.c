@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Apr  5 21:54:14 2016 David Zeng
-** Last update Wed Apr  6 01:27:56 2016 David Zeng
+** Last update Wed Apr  6 03:26:06 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -32,13 +32,11 @@ static void	fork_pipe(t_proc *proc, char ***env, int *fd_in, int *fd)
 
   if ((pid = fork()) == 0)
     {
-      dup2(*fd_in, 0);
-      if (proc->next != NULL)
-	dup2(fd[1], 1);
-      //redir_proc(proc, )
-      close(fd[0]);
-      if (my_builtins(proc->argv, env, true) != 1)
-	my_get_exec(*env, proc->argv);
+      if (redir_proc(proc, fd_in, fd) != -1)
+	{
+	  if (my_builtins(proc->argv, env, true) != 1)
+	    my_get_exec(*env, proc->argv);
+	}
       exit(1);
     }
   else if (pid > 0)

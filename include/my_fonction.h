@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Wed Apr  6 01:39:24 2016 David Zeng
+** Last update Wed Apr  6 03:15:57 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -16,6 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include "my.h"
 # include "my_list.h"
@@ -59,5 +60,6 @@ int		add_cmd(t_proc *act, char **tab, int i, int max);
 void		lexer_token(t_list *list, char *str, int i);
 void		exec_process(t_list *list, char ***env);
 int		parse_redirection(t_list *list);
+int		redir_proc(t_proc *proc, int *fd_in, int *fd);
 
 #endif /* !MY_FONCTION_H_ */
