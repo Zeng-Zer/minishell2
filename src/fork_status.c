@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Apr  7 03:04:25 2016 David Zeng
-** Last update Thu Apr  7 03:04:28 2016 David Zeng
+** Last update Thu Apr  7 03:32:24 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -14,6 +14,7 @@ static void	fork_status(void)
 {
   int		status;
 
+  status = 0;
   wait(&status);
   if (WIFSIGNALED(status))
     {
