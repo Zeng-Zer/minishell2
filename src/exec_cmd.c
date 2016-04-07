@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Jan  5 21:55:42 2016 David Zeng
-** Last update Tue Apr  5 23:39:45 2016 David Zeng
+** Last update Thu Apr  7 02:35:18 2016 
 */
 
 #include "my_fonction.h"
@@ -38,6 +38,8 @@ static int	my_exec(char *path, char **tab, char **env)
 
 static int	my_local_exec(char **tab, char **env)
 {
+  if (tab[0][0] != '.' && tab[0][0] != '/')
+    return (0);
   if (my_check_exec(tab[0]) == 0 && access(tab[0], X_OK) == 0)
     {
       my_fork_exec(tab[0], env, tab);
