@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 19:41:31 2016 David Zeng
-** Last update Thu Apr  7 02:21:51 2016 
+** Last update Thu Apr  7 03:01:35 2016 
 */
 
 #include "my_fonction.h"
@@ -26,6 +26,11 @@ static t_proc		*new_proc(void)
 
 static int		add_pipe(t_proc **proc, int i, int max)
 {
+  if ((*proc)->out[0] != 0)
+    {
+      my_put_err("Ambiguous output redirect.\n");
+      return (-1);
+    }
   if ((*proc)->argv == NULL || i == max)
     {
       my_put_err("Invalid null command.\n");
