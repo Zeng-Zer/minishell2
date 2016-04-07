@@ -1,11 +1,11 @@
 /*
-** pipe_nbr.c for pipe_nbr in /home/zeng_d
+** pipe_nbr.c for  in /home/zeng_d/rendu/Shell/PSU_2015_minishell2
 **
-** Made by
+** Made by David Zeng
 ** Login   <zeng_d@epitech.net>
 **
-** Started on  Wed Apr  6 21:08:42 2016
-** Last update Wed Apr  6 23:56:32 2016 
+** Started on  Thu Apr  7 03:05:30 2016 David Zeng
+** Last update Thu Apr  7 03:05:31 2016 David Zeng
 */
 
 #include "my_fonction.h"

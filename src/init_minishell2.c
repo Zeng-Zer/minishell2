@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 15:11:10 2016 David Zeng
-** Last update Thu Apr  7 01:53:30 2016 
+** Last update Thu Apr  7 03:04:51 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -27,7 +27,7 @@ void		exit_clean_env(char **env, int value, char **tab)
   exit(value);
 }
 
-void		show_pipe(t_proc *proc)//DEBUG==========================
+void		show_pipe(t_proc *proc)
 {
   t_proc	*tmp;
 
@@ -43,7 +43,7 @@ void		show_pipe(t_proc *proc)//DEBUG==========================
     }
 }
 
-void		show_process(t_list *list)//DEBUG=======================
+void		show_process(t_list *list)
 {
   t_node	*node;
   t_proc	*proc;
@@ -72,7 +72,6 @@ int		init_minishell2(char **env)
       tab = lexer(str);
       if ((list = parse_command(tab)) != NULL)
 	{
-	  //show_process(list);//DEBUG===================================
 	  if (parse_redirection(list) == 0)
 	    exec_process(list, &env);
 	  my_free_all(&list, &free_proc);
