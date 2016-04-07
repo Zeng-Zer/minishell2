@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Thu Apr  7 02:23:51 2016 
+** Last update Thu Apr  7 10:57:19 2016 
 */
 
 #ifndef MY_FONCTION_H_
@@ -63,7 +63,7 @@ int		parse_redirection(t_list *list);
 int		redir_proc(t_proc *proc, int *fd_in, int *fd);
 int		pipe_nbr(t_proc *proc);
 void		dup_and_close_pipe(t_proc *proc, int fd[], int cmd_atm, int max);
-void		wait_child_proc();
+void		wait_child_proc(int max);
 int		invalid_command(t_proc *proc);
 
 #endif /* !MY_FONCTION_H_ */
