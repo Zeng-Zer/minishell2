@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 19:41:31 2016 David Zeng
-** Last update Thu Apr  7 01:43:59 2016 
+** Last update Thu Apr  7 02:21:51 2016 
 */
 
 #include "my_fonction.h"
@@ -68,7 +68,10 @@ static int		add_cmd_list(t_list *list, char **tab, int max, int i)
       else
 	add_cmd(act, tab, i, max);
     }
-  my_add_list(list, proc);
+  if (proc->argv == NULL)
+    return (invalid_command(proc));
+  else
+    my_add_list(list, proc);
   return (0);
 }
 

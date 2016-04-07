@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Thu Apr  7 00:10:03 2016 
+** Last update Thu Apr  7 02:23:51 2016 
 */
 
 #ifndef MY_FONCTION_H_
@@ -57,12 +57,13 @@ void		free_proc(t_proc *proc);
 int		parser_cond_redir(char **tab, int i, int max);
 int		add_redir(t_proc *act, char **tab, int *i, int max);
 int		add_cmd(t_proc *act, char **tab, int i, int max);
-void		lexer_token(t_list *list, char *str, int i);
+void		lexer_token(t_list *list, char *str, int *i);
 void		exec_process(t_list *list, char ***env);
 int		parse_redirection(t_list *list);
 int		redir_proc(t_proc *proc, int *fd_in, int *fd);
 int		pipe_nbr(t_proc *proc);
 void		dup_and_close_pipe(t_proc *proc, int fd[], int cmd_atm, int max);
 void		wait_child_proc();
+int		invalid_command(t_proc *proc);
 
 #endif /* !MY_FONCTION_H_ */

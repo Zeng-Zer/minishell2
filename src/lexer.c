@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 14:33:33 2016 David Zeng
-** Last update Thu Apr  7 01:48:34 2016 
+** Last update Thu Apr  7 01:59:43 2016 
 */
 
 #include "my_fonction.h"
@@ -51,7 +51,7 @@ static int	fill_lexer_list(t_list *list, char *str, int i)
       while (str[i] != 0 && (str[i] == ' ' || str[i] == '\t' || str[i] == ';' ||
 			     str[i] == '|' || str[i] == '>' || str[i] == '<'))
 	{
-	  lexer_token(list, str, i);
+	  lexer_token(list, str, &i);
 	  i = i + 1;
 	}
       if (str[i] != 0)
