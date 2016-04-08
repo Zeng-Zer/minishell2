@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Tue Apr  5 21:54:14 2016 David Zeng
-** Last update Thu Apr  7 03:04:15 2016 David Zeng
+** Last update Sat Apr  9 00:50:03 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -51,8 +51,8 @@ static void	handle_pipe(t_proc *proc, char ***env, int max)
 
   pipe_and_close(fd, max, 1);
   cmd_atm = 0;
-  while (proc != NULL &&
-	 !(proc->next == NULL && my_builtins(proc->argv, env, false) == 1))
+  while (proc != NULL && !(proc->next == NULL &&
+			   my_builtins(proc->argv, env, false) == 1))
     {
       if ((pid = fork()) == -1)
 	return (my_put_err("Fork failed.\n"));
@@ -64,8 +64,7 @@ static void	handle_pipe(t_proc *proc, char ***env, int max)
       proc = proc->next;
       cmd_atm = cmd_atm + 1;
     }
-  if (proc != NULL &&
-      proc->next == NULL && my_builtins(proc->argv, env, false) == 1)
+  if (proc != NULL && proc->next == NULL && my_builtins(proc->argv, env, 0) == 1)
     my_builtins(proc->argv, env, true);
   pipe_and_close(fd, max, 0);
   wait_child_proc(max);

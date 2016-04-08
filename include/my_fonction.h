@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Thu Apr  7 10:57:19 2016 
+** Last update Sat Apr  9 00:45:54 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -24,6 +24,7 @@
 # define true 1
 # define false 0
 # define MALLOC malloc_err
+# define PUTS(STR) my_printf("%s\n", STR);
 
 typedef struct	s_proc
 {
