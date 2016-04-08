@@ -5,32 +5,32 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Thu Apr  7 00:16:13 2016 
+## Last update Fri Apr  8 22:41:29 2016 David Zeng
 ##
 
-SRC	= main.c \
+SRC	= src/main.c \
 	  src/init_minishell2.c \
-	  src/convert_env.c \
-	  src/my_parsing.c \
-	  src/my_str_to_tab.c \
-	  src/my_str_to_list.c \
-	  src/my_builtins.c \
-	  src/exec_builtins.c \
-	  src/my_setenv.c \
-	  src/my_get_env.c \
-	  src/my_cd.c \
-	  src/my_check_exec.c \
-	  src/exec_cmd.c \
-	  src/lexer.c \
-	  src/parse_command.c \
-	  src/add_redir.c \
-	  src/free_process.c \
-	  src/exec_process.c \
-	  src/lexer_token.c \
-	  src/parse_redirection.c \
-	  src/redir_proc.c \
-	  src/pipe_nbr.c \
-	  src/fork_status.c \
+	  src/parser/my_parsing.c \
+	  src/parser/lexer.c \
+	  src/parser/parse_command.c \
+	  src/parser/lexer_token.c \
+	  src/parser/parse_redirection.c \
+	  src/parser/add_redir.c \
+	  src/execution/exec_builtins.c \
+	  src/execution/exec_process.c \
+	  src/execution/my_check_exec.c \
+	  src/execution/exec_cmd.c \
+	  src/execution/fork_status.c \
+	  src/redirect/pipe_nbr.c \
+	  src/redirect/redir_proc.c \
+	  src/env/convert_env.c \
+	  src/env/my_get_env.c \
+	  src/builtins/my_builtins.c \
+	  src/builtins/my_cd.c \
+	  src/builtins/my_setenv.c \
+	  src/misc/my_str_to_tab.c \
+	  src/misc/my_str_to_list.c \
+	  src/misc/free_process.c \
 
 NAME	= mysh
 

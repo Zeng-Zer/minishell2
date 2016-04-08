@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Jan  6 22:30:09 2016 David Zeng
-** Last update Thu Apr  7 03:05:02 2016 David Zeng
+** Last update Fri Apr  8 22:53:13 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -27,7 +27,7 @@ static int	my_exit(char **tab, char ***env)
   int		tmp;
 
   exit_value = 0;
-  if ((tmp = my_tablen(tab)) != 2 ||
+  if (((tmp = my_tablen(tab)) != 2 && tmp != 1) ||
       (tmp == 2 && my_testnbr(tab[1], &exit_value) != 1))
     {
       my_put_err("exit: Expression Syntax\n");
