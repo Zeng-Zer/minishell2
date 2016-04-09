@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Mar 31 03:22:28 2016 David Zeng
-** Last update Sun Apr 10 00:47:11 2016 David Zeng
+** Last update Sun Apr 10 01:04:05 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -17,18 +17,19 @@ static void	my_get_builtins_reference_str(char *ref[])
   ref[2] = "setenv";
   ref[3] = "unsetenv";
   ref[4] = "cd";
+  ref[5] = "alias";
 }
 
 int		my_builtins(char **tab, char ***env, int opt, t_use *use)
 {
-  int		(*builtins[5])(char **, char ***, t_use *);
-  char		*reference[5];
+  int		(*builtins[6])(char **, char ***, t_use *);
+  char		*reference[6];
   int		i;
 
   i = 0;
   my_get_builtins_reference(builtins);
   my_get_builtins_reference_str(reference);
-  while (i < 5)
+  while (i < 6)
     {
       if (my_strcmp(tab[0], reference[i]) == 0)
 	{

@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Sat Apr  9 23:54:38 2016 David Zeng
-** Last update Sun Apr 10 00:06:21 2016 David Zeng
+** Last update Sun Apr 10 01:10:54 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -29,7 +29,7 @@ static void	delete_old_alias(t_list *alias, char *cmd)
     }
 }
 
-static void	new_alias(t_list *alias, char *cmd, char **replace)
+void		new_alias(t_list *alias, char *cmd, char **replace)
 {
   t_alias	*new;
 

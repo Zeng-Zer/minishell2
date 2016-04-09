@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Nov 30 15:49:28 2015 David Zeng
-** Last update Sun Apr 10 00:50:23 2016 David Zeng
+** Last update Sun Apr 10 01:10:31 2016 David Zeng
 */
 
 #ifndef MY_FONCTION_H_
@@ -83,5 +83,7 @@ void		wait_child_proc(int max);
 int		invalid_command(t_proc *proc);
 t_list		*new_alias_list(void);
 void		replace_alias(t_list *list, t_list *alias);
+int		my_alias(char **tab, char ***env, t_use *use);
+void		new_alias(t_list *alias, char *cmd, char **replace);
 
 #endif /* !MY_FONCTION_H_ */

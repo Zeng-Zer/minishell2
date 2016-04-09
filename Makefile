@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Sun Apr 10 00:21:42 2016 David Zeng
+## Last update Sun Apr 10 01:13:57 2016 David Zeng
 ##
 
 SRC	= src/main.c \
@@ -30,6 +30,7 @@ SRC	= src/main.c \
 	  src/builtins/my_builtins.c \
 	  src/builtins/my_cd.c \
 	  src/builtins/my_setenv.c \
+	  src/builtins/my_alias.c \
 	  src/misc/my_str_to_tab.c \
 	  src/misc/my_str_to_list.c \
 	  src/misc/free_process.c \

@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Jan  6 22:30:09 2016 David Zeng
-** Last update Sun Apr 10 00:48:31 2016 David Zeng
+** Last update Sun Apr 10 01:03:35 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -86,4 +86,5 @@ void		my_get_builtins_reference(int (*builtins[])(char **,
   builtins[2] = &my_setenv;
   builtins[3] = &my_unsetenv;
   builtins[4] = &my_cd;
+  builtins[5] = &my_alias;
 }
