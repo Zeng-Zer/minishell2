@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Fri Apr  1 19:41:31 2016 David Zeng
-** Last update Thu Apr  7 03:05:15 2016 David Zeng
+** Last update Sun Apr 10 01:00:00 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -86,6 +86,8 @@ t_list			*parse_command(char **tab)
   int			i;
   int			deb;
 
+  if (tab == NULL)
+    return (NULL);
   if ((list = my_declare_list()) == NULL)
     exit(1);
   i = 0;

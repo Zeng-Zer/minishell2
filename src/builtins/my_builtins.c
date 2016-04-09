@@ -5,12 +5,12 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Jan  6 22:30:09 2016 David Zeng
-** Last update Fri Apr  8 22:53:13 2016 David Zeng
+** Last update Sun Apr 10 00:48:31 2016 David Zeng
 */
 
 #include "my_fonction.h"
 
-static int	my_env(char **tab, char ***env)
+static int	my_env(char **tab, char ***env, t_use *use)
 {
   if (my_tablen(tab) != 1)
     {
@@ -18,10 +18,11 @@ static int	my_env(char **tab, char ***env)
       return (1);
     }
   my_printf("%t", *env);
+  (void)use;
   return (1);
 }
 
-static int	my_exit(char **tab, char ***env)
+static int	my_exit(char **tab, char ***env, t_use *use)
 {
   int		exit_value;
   int		tmp;
@@ -33,7 +34,7 @@ static int	my_exit(char **tab, char ***env)
       my_put_err("exit: Expression Syntax\n");
       return (1);
     }
-  exit_clean_env(*env, exit_value, tab);
+  exit_clean_env(*env, exit_value, tab, use);
   return (1);
 }
 
@@ -59,7 +60,7 @@ static void	tabcpy_unset(char ***new, char **tab, char **env)
   free(env);
 }
 
-static int	my_unsetenv(char **tab, char ***env)
+static int	my_unsetenv(char **tab, char ***env, t_use *use)
 {
   char		**new;
 
@@ -72,10 +73,13 @@ static int	my_unsetenv(char **tab, char ***env)
     exit(1);
   tabcpy_unset(&new, &tab[1], *env);
   (*env) = new;
+  (void)use;
   return (1);
 }
 
-void		my_get_builtins_reference(int (*builtins[])(char **, char ***))
+void		my_get_builtins_reference(int (*builtins[])(char **,
+							    char ***,
+							    t_use *))
 {
   builtins[0] = &my_exit;
   builtins[1] = &my_env;

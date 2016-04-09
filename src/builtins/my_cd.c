@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Jan  7 01:09:05 2016 David Zeng
-** Last update Thu Mar 31 03:42:04 2016 David Zeng
+** Last update Sun Apr 10 00:44:55 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -21,7 +21,7 @@ static void	my_chdir_chwd(char *path, char ***env)
   tab[2] = getcwd(NULL, 0);
   chdir(path);
   tab[3] = NULL;
-  my_setenv(tab, env);
+  my_setenv(tab, env, NULL);
   my_free_tab(tab);
   if ((tab = malloc(sizeof(char *) * 4)) == NULL ||
       (tab[0] = my_strdup("setenv")) == NULL ||
@@ -29,7 +29,7 @@ static void	my_chdir_chwd(char *path, char ***env)
     return ;
   tab[2] = getcwd(NULL, 0);
   tab[3] = NULL;
-  my_setenv(tab, env);
+  my_setenv(tab, env, NULL);
   my_free_tab(tab);
 }
 
@@ -77,7 +77,7 @@ static int	my_check_cd_minus(char *path, char ***env)
   return (0);
 }
 
-int		my_cd(char **tab, char ***env)
+int		my_cd(char **tab, char ***env, t_use *use)
 {
   if (my_tablen(tab) > 2)
     {
@@ -88,5 +88,6 @@ int		my_cd(char **tab, char ***env)
     my_chdir_chwd(my_get_env(*env, "HOME="), env);
   else
     my_check_cd_minus(tab[1], env);
+  (void)use;
   return (1);
 }

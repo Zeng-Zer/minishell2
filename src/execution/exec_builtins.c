@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Thu Mar 31 03:22:28 2016 David Zeng
-** Last update Thu Apr  7 03:04:07 2016 David Zeng
+** Last update Sun Apr 10 00:47:11 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -19,9 +19,9 @@ static void	my_get_builtins_reference_str(char *ref[])
   ref[4] = "cd";
 }
 
-int		my_builtins(char **tab, char ***env, int opt)
+int		my_builtins(char **tab, char ***env, int opt, t_use *use)
 {
-  int		(*builtins[5])(char **, char ***);
+  int		(*builtins[5])(char **, char ***, t_use *);
   char		*reference[5];
   int		i;
 
@@ -33,7 +33,7 @@ int		my_builtins(char **tab, char ***env, int opt)
       if (my_strcmp(tab[0], reference[i]) == 0)
 	{
 	  if (opt == true)
-	    builtins[i](tab, env);
+	    builtins[i](tab, env, use);
 	  return (1);
 	}
       i = i + 1;

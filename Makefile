@@ -5,7 +5,7 @@
 ## Login   <zeng_d@epitech.net>
 ##
 ## Started on  Mon Oct 12 13:31:18 2015 David Zeng
-## Last update Fri Apr  8 22:41:29 2016 David Zeng
+## Last update Sun Apr 10 00:21:42 2016 David Zeng
 ##
 
 SRC	= src/main.c \
@@ -16,12 +16,14 @@ SRC	= src/main.c \
 	  src/parser/lexer_token.c \
 	  src/parser/parse_redirection.c \
 	  src/parser/add_redir.c \
+	  src/parser/alias.c \
+	  src/parser/init_alias.c \
 	  src/execution/exec_builtins.c \
 	  src/execution/exec_process.c \
 	  src/execution/my_check_exec.c \
 	  src/execution/exec_cmd.c \
 	  src/execution/fork_status.c \
-	  src/redirect/pipe_nbr.c \
+	  src/execution/pipe_nbr.c \
 	  src/redirect/redir_proc.c \
 	  src/env/convert_env.c \
 	  src/env/my_get_env.c \
@@ -31,6 +33,7 @@ SRC	= src/main.c \
 	  src/misc/my_str_to_tab.c \
 	  src/misc/my_str_to_list.c \
 	  src/misc/free_process.c \
+	  src/misc/my_tabdup.c \
 
 NAME	= mysh
 

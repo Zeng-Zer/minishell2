@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Wed Apr  6 01:47:34 2016 David Zeng
-** Last update Thu Apr  7 03:05:46 2016 David Zeng
+** Last update Sat Apr  9 23:44:27 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -77,7 +77,7 @@ static int	redir_out(t_proc *proc)
   return (0);
 }
 
-int		redir_proc(t_proc *proc, int *fd_in, int *fd)
+int		redir_proc(t_proc *proc)
 {
   if (proc->in[0] != 0 && redir_in(proc) == -1)
     return (-1);

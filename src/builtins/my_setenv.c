@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Mon Mar 28 18:00:42 2016 David Zeng
-** Last update Thu Mar 31 03:42:17 2016 David Zeng
+** Last update Sun Apr 10 00:45:11 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -81,7 +81,7 @@ static void	change_env(char **tab, char ***env)
     append_env(tab, env, i);
 }
 
-int		my_setenv(char **tab, char ***env)
+int		my_setenv(char **tab, char ***env, t_use *use)
 {
   int		tmp;
 
@@ -97,5 +97,6 @@ int		my_setenv(char **tab, char ***env)
     }
   else
     change_env(&tab[1], env);
+  (void)use;
   return (1);
 }
