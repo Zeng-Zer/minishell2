@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Sat Apr  9 23:54:38 2016 David Zeng
-** Last update Sun Apr 10 01:10:54 2016 David Zeng
+** Last update Mon Apr 11 19:06:48 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -44,13 +44,8 @@ void		new_alias(t_list *alias, char *cmd, char **replace)
 t_list		*new_alias_list(void)
 {
   t_list	*alias;
-  char		*replace[3];
 
-  replace[0] = "ls";
-  replace[1] = "--color=auto";
-  replace[2] = NULL;
   if ((alias = my_declare_list()) == NULL)
     exit(1);
-  new_alias(alias, "ls", replace);
   return (alias);
 }
