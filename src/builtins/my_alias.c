@@ -5,7 +5,7 @@
 ** Login   <zeng_d@epitech.net>
 **
 ** Started on  Sun Apr 10 01:04:15 2016 David Zeng
-** Last update Sun Apr 10 01:23:06 2016 David Zeng
+** Last update Tue Apr 12 16:18:11 2016 David Zeng
 */
 
 #include "my_fonction.h"
@@ -32,7 +32,12 @@ static void	print_alias(t_list *alias, char *cmd)
   tmp = alias->debut;
   while (tmp != NULL)
     {
-      if (my_strcmp(cmd, ((t_alias *)tmp->data)->cmd) == 0)
+      if (cmd == NULL)
+	{
+	  my_printf("%s\t", ((t_alias *)tmp->data)->cmd);
+	  print_tab(((t_alias *)tmp->data)->replace);
+	}
+      else if (my_strcmp(cmd, ((t_alias *)tmp->data)->cmd) == 0)
 	{
 	  print_tab(((t_alias *)tmp->data)->replace);
 	  return;
@@ -44,6 +49,11 @@ static void	print_alias(t_list *alias, char *cmd)
 int		my_alias(char **tab, char ***env, t_use *use)
 {
   (void)env;
+  if (my_tablen(tab) == 1)
+    {
+      print_alias(use->alias, NULL);
+      return (1);
+    }
   if (my_tablen(tab) == 2)
     {
       print_alias(use->alias, tab[1]);
