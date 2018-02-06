@@ -10,6 +10,7 @@ segfault
 *.org
 zeng_d trace
 moulitest
+*.a
 
 ##         ##
 ## IGNORED ##
